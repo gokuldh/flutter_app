@@ -17,14 +17,70 @@ class FlutterBootcamp extends StatelessWidget{
           backgroundColor: Colors.deepOrange,
           centerTitle: true,
         ),
-        body: Center(
-          child: Text(Strings.bodytext,
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.deepOrange,
-              fontFamily: 'ArchitectsDaughter',
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  color: Colors.white,
+                  child: Text("Skillto"),
+                  padding: EdgeInsets.all(30),
+                ),
+                Container(
+                  color: Colors.blue,
+                  child: Text("Skillto"),
+                  padding: EdgeInsets.all(30),
+                ),
+                Container(
+                  color: Colors.deepOrange,
+                  child: Text("Skillto"),
+                  padding: EdgeInsets.all(30),
+                ),
+              ],
             ),
-          ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  color: Colors.green,
+                  child: Text("Skillto"),
+                  padding: EdgeInsets.all(30),
+                ),
+                Container(
+                  color: Colors.blue,
+                  child: Text("Skillto"),
+                  padding: EdgeInsets.all(30),
+                ),
+                Container(
+                  color: Colors.deepOrange,
+                  child: Text("Skillto"),
+                  padding: EdgeInsets.all(30),
+                ),
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  color: Colors.green,
+                  child: Text("Skillto"),
+                  padding: EdgeInsets.all(30),
+                ),
+                Container(
+                  color: Colors.blue,
+                  child: Text("Skillto"),
+                  padding: EdgeInsets.all(30),
+                ),
+                Container(
+                  color: Colors.deepOrange,
+                  child: Text("Skillto"),
+                  padding: EdgeInsets.all(30),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
