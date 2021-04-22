@@ -17,66 +17,91 @@ class FlutterBootcamp extends StatelessWidget{
           backgroundColor: Colors.deepOrange,
           centerTitle: true,
         ),
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        body: Column(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Row(
               children: [
-                Container(
-                  color: Colors.white,
-                  child: Text("Skillto"),
-                  padding: EdgeInsets.all(30),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.deepOrange,
+                    child: Text("A"),
+                  ),
                 ),
-                Container(
-                  color: Colors.blue,
-                  child: Text("Skillto"),
-                  padding: EdgeInsets.all(30),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.blue,
+                    child: Text("B"),
+                  ),
                 ),
-                Container(
-                  color: Colors.deepOrange,
-                  child: Text("Skillto"),
-                  padding: EdgeInsets.all(30),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.green,
+                    child: Text("C"),
+                  ),
                 ),
               ],
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Divider(
+              color: Colors.red,
+            ),
+            Row(
               children: [
-                Container(
-                  color: Colors.green,
-                  child: Text("Skillto"),
-                  padding: EdgeInsets.all(30),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.deepOrange,
+                    child: Text("A"),
+                  ),
                 ),
-                Container(
-                  color: Colors.blue,
-                  child: Text("Skillto"),
-                  padding: EdgeInsets.all(30),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.blue,
+                    child: Text("B"),
+                  ),
                 ),
-                Container(
-                  color: Colors.deepOrange,
-                  child: Text("Skillto"),
-                  padding: EdgeInsets.all(30),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.green,
+                    child: Text("C"),
+                  ),
                 ),
               ],
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            SizedBox(
+              height: 50,
+            ),
+            Row(
               children: [
-                Container(
-                  color: Colors.green,
-                  child: Text("Skillto"),
-                  padding: EdgeInsets.all(30),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+
+                  ),
                 ),
-                Container(
-                  color: Colors.blue,
-                  child: Text("Skillto"),
-                  padding: EdgeInsets.all(30),
+                Expanded(
+                  flex: 5,
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/sky.jpg'),
+                    radius: 50,
+                  ),
                 ),
-                Container(
-                  color: Colors.deepOrange,
-                  child: Text("Skillto"),
-                  padding: EdgeInsets.all(30),
+                Expanded(
+                  flex: 5,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                  ),
                 ),
               ],
             ),
