@@ -1,111 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/strings.dart';
 
-void main(){
 
+//State<StatefulWidget> createState() {
+
+void main(){
   runApp(FlutterBootcamp());
 }
 
-class FlutterBootcamp extends StatelessWidget{
+class FlutterBootcamp extends StatefulWidget{
+  @override
+  _FlutterBootcamp createState() => _FlutterBootcamp();
+
+}
+
+class _FlutterBootcamp extends State<FlutterBootcamp>{
+
+  List<String> notes = [
+    "Maintain your Car!",
+    "Do the Project",
+    "Bring Groceries",
+    "Finish it by Tonight!",
+    "My name is Vardaan"
+  ];
+
+  Widget cardTemplate(singlenote){
+    return Card(
+      shadowColor: Colors.blue,
+      color: Colors.blue,
+      margin: EdgeInsets.all(5),
+      child: Padding(
+        padding: EdgeInsets.all(15),
+        child: Column(
+          children: [
+            Text(singlenote),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text(Strings.titletext),
-          backgroundColor: Colors.deepOrange,
-          centerTitle: true,
+          title: Text("Notes App"),
+          backgroundColor: Colors.green,
         ),
         body: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.deepOrange,
-                    child: Text("A"),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.blue,
-                    child: Text("B"),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.green,
-                    child: Text("C"),
-                  ),
-                ),
-              ],
-            ),
-            Divider(
-              color: Colors.red,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.deepOrange,
-                    child: Text("A"),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.blue,
-                    child: Text("B"),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.green,
-                    child: Text("C"),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-
-                  ),
-                ),
-                Expanded(
-                  flex: 5,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/sky.jpg'),
-                    radius: 50,
-                  ),
-                ),
-                Expanded(
-                  flex: 5,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                  ),
-                ),
-              ],
-            ),
-          ],
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: notes.map((singlenote) => cardTemplate(singlenote)).toList(),
         ),
       ),
     );
