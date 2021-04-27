@@ -1,73 +1,131 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-//https://reqres.in/api/users?page=2
+
 
 void main(){
-  runApp(ApiTest());
+  runApp(QuickTimer());
 }
 
-class ApiTest extends StatefulWidget{
+class QuickTimer extends StatefulWidget{
   @override
-  _ApiTest createState() => _ApiTest();
+  _QuickTimer createState() => _QuickTimer();
 }
 
-class _ApiTest extends State<ApiTest>{
+class _QuickTimer extends State<QuickTimer>{
 
-  Map data;
-  List userData;
+  static const duration = const Duration(seconds: 1);
+  bool isActive = false;
+  Timer timer;
+  int secondspassed = 0;
 
-  Future getData() async{
-    http.Response response = await http.get('https://reqres.in/api/users?page=2');
-    data = json.decode(response.body);
-    setState(() {
-      userData = data['data'];
-    });
+  void ticker(){
+    if (isActive){
+      setState(() {
+        secondspassed = secondspassed + 1;
+      });
+    }
   }
-
 
   void initState(){
     super.initState();
-    getData();
+    timer = Timer.periodic(duration, (timer) {
+      ticker();
+    });
   }
-
 
   @override
   Widget build(BuildContext context) {
+
+    int seconds = secondspassed % 60; // 65%60 = 5
+    int minutes = secondspassed ~/60; // 125%60 = 5 2
+    int hours = secondspassed ~/ (60*60);
+
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Api Test"),
+          title: Text("Timer App"),
           centerTitle: true,
           backgroundColor: Colors.deepOrange,
         ),
-        body: ListView.builder(
-          itemCount: userData == null?0: 3,
-          itemBuilder: (BuildContext context, index){
-            return Card(
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(userData[index]['avatar']),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Text("${userData[index]['first_name']}, ${userData[index]['last_name']}"),
-                    ),
-                  ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TimerContainer(
+                    label: "HH",
+                    value: hours.toString(),
+                  ),
+                  TimerContainer(
+                    label: "MM",
+                    value: minutes.toString(),
+                  ),
+                  TimerContainer(
+                    label: "SS",
+                    value: seconds.toString(),
+                  ),
+                ],
+              ),
+              Container(
+                margin: EdgeInsets.all(20),
+                child: RaisedButton(
+                  color: Colors.deepOrange,
+                  child: Text(isActive? 'Stop':'Start'),
+                  onPressed: (){
+                    setState(() {
+                      isActive = !isActive;
+                    });
+                  },
                 ),
               ),
-            );
-          },
+            ],
+          ),
         ),
       ),
     );
-
   }
+}
 
+class TimerContainer extends StatelessWidget{
+
+  TimerContainer({this.label,this.value});
+
+  String label;
+  String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.all(10),
+      decoration: new BoxDecoration(
+        color: Colors.black87,
+        borderRadius: new BorderRadius.circular(20),
+      ),
+      child: Column(
+        children: [
+          Text(
+              "$value",
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.white
+            ),
+          ),
+          Text(
+              "$label",
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 
